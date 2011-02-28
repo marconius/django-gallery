@@ -1,1 +1,1 @@
-There are no requirements at this moment
+Requires django-tagging
