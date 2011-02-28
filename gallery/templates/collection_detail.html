@@ -1,0 +1,19 @@
+{% extends "gallery/base-gallery.html" %}
+{% load i18n %}
+
+{% block title %}This is the {{ collection.title }} collection{% endblock %}
+
+{% block content_title %}{{block.super}} - {{ collection.title }} Collection{% endblock %}
+
+{% block content %}
+ 
+
+    {% for painting in object_list %}
+    <div class="item">
+        <h3 class="title"><a href="{{ painting.get_absolute_url }}" title="{% trans "View this painting" %}">{{ painting.title }}</a></h3>
+    </div>
+    {% endfor %}
+
+
+collection_detail.html    
+{% endblock %}

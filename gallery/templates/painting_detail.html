@@ -1,0 +1,16 @@
+{% extends "gallery/base-gallery.html" %}
+{% load i18n %}
+
+{% block title %}{{ painting.title }} - a painting{% endblock %}
+
+{% block content_title %}{{block.super}} - {{ painting.title }} {% endblock %}
+
+{% block content %}
+ 
+<h3 class="title">{{ painting.title }}</h3>
+
+<a href="{{ painting.get_absolute_url }}" title="{% trans "permalink" %}">P</a>
+
+
+painting_detail.html    
+{% endblock %}

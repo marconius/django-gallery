@@ -1,0 +1,18 @@
+{% extends "gallery/base-gallery.html" %}
+{% load i18n %}
+
+{% block title %}This is the collections page{% endblock %}
+
+{% block content_title %}{{block.super}}{% endblock %}
+
+{% block content %}
+collections_list.html
+
+
+    {% for collection in object_list %}
+    <div class="item">
+      <h3 class="title"><a href="{{ collection.get_absolute_url }}" title="{% trans "View this Collection" %}">{{ collection.title }}</a></h3>
+    </div>
+    {% endfor %}
+    
+{% endblock %}
