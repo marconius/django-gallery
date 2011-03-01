@@ -1,8 +1,17 @@
 from django.contrib import admin
-from gallery.models import Painting, Collection, Attribute
+from gallery.models import *
+
+class ItemAttributeInLine(admin.TabularInline):
+    model=ItemAttribute
+
+admin.site.register(Attribute)
 
 class PaintingAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
+    inlines = [
+        ItemAttributeInLine,
+    ]
+    
 admin.site.register(Painting, PaintingAdmin)
 
 class CollectionAdmin(admin.ModelAdmin) :
@@ -10,4 +19,4 @@ class CollectionAdmin(admin.ModelAdmin) :
    filter_horizontal = ('paintings',)
 admin.site.register(Collection, CollectionAdmin)
 
-admin.site.register(Attribute)
+

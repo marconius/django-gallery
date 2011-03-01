@@ -80,4 +80,8 @@ class ItemAttribute(models.Model) :
     painting = models.ForeignKey(Painting)
     attribute = models.ForeignKey(Attribute)
     description = models.TextField()
-    
+
+    class Meta :
+        verbose_name = _('item attribute')
+        verbose_name_plural = ('item attributes')
+

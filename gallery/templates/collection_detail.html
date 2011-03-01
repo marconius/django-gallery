@@ -10,7 +10,7 @@
 
     {% for painting in object_list %}
     <div class="item">
-        <h3 class="title"><a href="{{ painting.get_absolute_url }}" title="{% trans "View this painting" %}">{{ painting.title }}</a></h3>
+        <h3 class="title"><a href="{{ painting.get_absolute_url }}" title="{% trans 'View this painting' %}">{{ painting.title }}</a></h3>
     </div>
     {% endfor %}
 

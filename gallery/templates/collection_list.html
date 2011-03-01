@@ -11,7 +11,7 @@ collections_list.html
 
     {% for collection in object_list %}
     <div class="item">
-      <h3 class="title"><a href="{{ collection.get_absolute_url }}" title="{% trans "View this Collection" %}">{{ collection.title }}</a></h3>
+      <h3 class="title"><a href="{{ collection.get_absolute_url }}" title="{% trans 'View this Collection' %}">{{ collection.title }}</a></h3>
     </div>
     {% endfor %}
     

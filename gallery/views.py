@@ -4,7 +4,7 @@ import re
 from django.shortcuts import get_object_or_404
 from django.views.generic import list_detail
 
-from gallery.models import *
+from models import *
 
 def collection_list(request, **kwargs) :
     return list_detail.object_list (
