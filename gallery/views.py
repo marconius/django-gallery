@@ -27,6 +27,8 @@ def collection_detail(request, slug, template_name = "gallery/collection_detail.
 
 def painting_detail(request, slug, **kwargs):
     
+    # use collection_set to return all the collections that this item is in
+     
     return list_detail.object_detail (
         request,
         queryset = Painting.objects.all(),
