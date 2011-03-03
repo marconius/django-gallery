@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup( name = 'django-gallery',
-    version='0.1',
+    version='0.2',
     description='A gallery for my artist sites',
     author='Marco Gagliano',
     author_email='marco@cuthemustard.com',

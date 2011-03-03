@@ -11,7 +11,7 @@ class Attribute(models.Model) :
        verbose_name = _('attribute')
        
     def __unicode__(self):
-        return self.name
+        return self.name    
 
 class Painting(models.Model) :
     STATUS_CHOICES = (
@@ -50,6 +50,9 @@ class Painting(models.Model) :
     @property
     def preview_url(self) :
         return '%s%s' % (settings.MEDIA_URL, self.preview)
+    
+    def attributes_list(self) :
+        return ItemAttribute.objects.filter(painting=self)
 
 class Collection(models.Model) :
     STATUS_CHOICES = (
@@ -84,4 +87,7 @@ class ItemAttribute(models.Model) :
     class Meta :
         verbose_name = _('item attribute')
         verbose_name_plural = ('item attributes')
+    
+    def __unicode__(self):
+        return '%s for %s' % (self.attribute.name, self.painting.title)
 
