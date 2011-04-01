@@ -4,6 +4,11 @@ from tagging.fields import TagField
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
+STATUS_CHOICES = (
+    (1, _('Live')),
+    (0, _('Not Live')),
+)
+
 class Attribute(models.Model) :
     name = models.CharField(_('name'), max_length=100)
     
@@ -14,14 +19,10 @@ class Attribute(models.Model) :
         return self.name    
 
 class Painting(models.Model) :
-    STATUS_CHOICES = (
-        (1, _('Live')),
-        (2, _('Not Live')),
-    )
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField()
     # Translators : this is the name of the field not the choice of flaging the item as live
-    live = models.IntegerField(_('live'), choices = STATUS_CHOICES, default = 1)
+    live = models.IntegerField(_('live'), choices = STATUS_CHOICES, default = 0)
     sort_order = models.IntegerField(_('sort order'), default = 0)
     image = models.FileField(_('main image'), upload_to = 'img/paintings/')
     preview = models.ImageField(_('preview image'), upload_to ='img/paintings/previews/', blank = 'true')
@@ -55,10 +56,6 @@ class Painting(models.Model) :
         return ItemAttribute.objects.filter(painting=self)
 
 class Collection(models.Model) :
-    STATUS_CHOICES = (
-        (1, _('Live')),
-        (2, _('Not Live')),
-    )
     title = models.CharField(_('title'), max_length = 255)
     slug = models.SlugField()
     live = models.IntegerField(_('live'), choices = STATUS_CHOICES, default = 1)

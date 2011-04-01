@@ -4,12 +4,12 @@ import re
 from django.shortcuts import get_object_or_404
 from django.views.generic import list_detail
 
-from models import *
+from models import Collection Painting
 
 def collection_list(request, **kwargs) :
     return list_detail.object_list (
         request,
-        queryset=Collection.objects.all(),
+        queryset=Collection.objects.live(),
         **kwargs
     )
 
@@ -19,7 +19,7 @@ def collection_detail(request, slug, template_name = "gallery/collection_detail.
     
     return list_detail.object_list (
         request,
-        queryset=collection.paintings.all(),
+        queryset=collection.paintings.live(),
         template_name=template_name,
         extra_context = {'collection' : collection }, 
         **kwargs
