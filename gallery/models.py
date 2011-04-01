@@ -4,6 +4,8 @@ from tagging.fields import TagField
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
+from gallery.managers import *
+
 STATUS_CHOICES = (
     (1, _('Live')),
     (0, _('Not Live')),
@@ -32,6 +34,7 @@ class Painting(models.Model) :
     uploaded = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)    
     sold = models.BooleanField(_('sold'))
+    objects = PaintingManager()
     
     class Meta :
        verbose_name = _('painting')
@@ -65,6 +68,7 @@ class Collection(models.Model) :
     modified = models.DateTimeField(auto_now = True)
     description = models.TextField(_('description'), blank = True)
     sort_order = models.IntegerField(_('sort order'), default=0)
+    objects = CollectionManager()
     
     class Meta :
        verbose_name = _('collection')

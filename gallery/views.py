@@ -9,7 +9,7 @@ from models import Collection, Painting
 def collection_list(request, **kwargs) :
     return list_detail.object_list (
         request,
-        queryset=Collection.objects.live(),
+        queryset=Collection.objects.live().order_by('-sort_order', 'title'),
         **kwargs
     )
 
@@ -19,7 +19,7 @@ def collection_detail(request, slug, template_name = "gallery/collection_detail.
     
     return list_detail.object_list (
         request,
-        queryset=collection.paintings.live(),
+        queryset=collection.paintings.live().order_by('-sort_order', 'title'),
         template_name=template_name,
         extra_context = {'collection' : collection }, 
         **kwargs
